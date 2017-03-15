@@ -1,7 +1,7 @@
-         /* A compléter */
-        <p>
-            <div class="alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>  /* A compléter */
-            </div>
-        </p>
-         /* A compléter */
+@if ($erreur!="")
+<p>
+	<div class="alert-danger" role="alert">
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{$erreur or ''}}
+	</div>
+</p>
+@endif
