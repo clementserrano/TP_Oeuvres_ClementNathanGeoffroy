@@ -6,8 +6,11 @@
 /.idea
 Homestead.json
 Homestead.yaml
-.env
 
 /nbproject
 .project
 /.settings
+
+/composer.lock
+
+/.buildpath
