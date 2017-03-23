@@ -11,6 +11,5 @@ Homestead.yaml
 .project
 /.settings
 
-/composer.lock
-
 /.buildpath
+*.iml
