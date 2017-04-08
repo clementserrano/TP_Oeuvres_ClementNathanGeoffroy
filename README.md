@@ -1,3 +1,8 @@
+## Fonctionnalitées complémentaires
+
+- Confirmation de réservation
+- Liste des réservations
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
