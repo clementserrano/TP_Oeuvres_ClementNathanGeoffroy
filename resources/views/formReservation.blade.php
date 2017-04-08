@@ -12,7 +12,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">Date réservation : </label>
             <div class="col-md-3">
-                    <input type="text" name="date_reservation" id="date_reservation" value="" class="form-control" placeholder="AAAA-MM-JJ" required/>
+                    <input type="text" name="date_reservation" id="datepicker" value="" class="form-control" placeholder="AAAA-MM-JJ" required/>
             </div>
         </div>        
         <div class="form-group">

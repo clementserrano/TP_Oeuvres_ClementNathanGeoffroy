@@ -27,10 +27,12 @@
                 <td>{{ $reservation->prenom_adherent }}</td>
                 <td>{{ $reservation->nom_adherent }}</td>
                 <td style="text-align:center;">
+                    @if($reservation->statut == "Attente")
                     <a class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-placement="top" title="Confirmer" href="#"
                        onclick="javascript:if (confirm('Confirmer la réservation ?'))
                                { window.location='{{ url('/confirmerReservation') }}/{{$reservation->date_reservation}}/{{$reservation->id_oeuvre}}';}">
                     </a>
+                    @endif
                 </td>
                 <td style="text-align:center;">
                     <a class="glyphicon glyphicon-trash" data-toggle="tooltip" data-placement="top" title="Supprimer" href="#"
