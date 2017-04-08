@@ -50,7 +50,7 @@ Route::get('/reserverOeuvre/{id}','ReservationController@reserveOeuvre');
 Route::post('/validerReservation','ReservationController@validateReservation');
 
 // Confirmer une réservation
-Route::get('/confimerReservation/{id}','ReservationController@confirmReservation');
+Route::get('/confirmerReservation/{date}/{id}','ReservationController@confirmReservation');
 
 // Supprimer une réservation
-Route::get('/supprimerReservation/{id}','ReservationController@deleteReservation');
+Route::get('/supprimerReservation/{date}/{id}','ReservationController@deleteReservation');

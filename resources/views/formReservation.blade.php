@@ -1,12 +1,13 @@
- /* A compléter */
- /* A compléter */  
+@extends('layouts.master')
+@section('content')
+{!! Form::open(['url'=>'validerReservation']) !!}
 <div class="col-md-12 well well-sm">
     <center><h1>{{$titreVue or ''}}</h1></center>
     <div class="form-horizontal">    
         <div class="form-group">
-            <input type="hidden" name="id_oeuvre" value=" /* A compléter */"/>
+            <input type="hidden" name="id_oeuvre" value="{{$oeuvre->id_oeuvre or 0}}"/>
             <label class="col-md-3 control-label">Titre : </label>
-            <label class="col-md-6 form-control-static"> /* A compléter */</label>            
+            <label class="col-md-6 form-control-static">{{$oeuvre->titre or ''}}</label>
         </div>
         <div class="form-group">
             <label class="col-md-3 control-label">Date réservation : </label>
@@ -19,7 +20,10 @@
             <div class="col-md-3">
                 <select class='form-control' name='cbAdherent' required>
                     <OPTION VALUE=0>Sélectionner un adhérent</option>
-                     /* A compléter */
+                    @foreach($adherents as $adherent)
+                        selected=""
+                        <option value="{{$adherent->id_adherent}}">{{$adherent->prenom_adherent}} {{$adherent->nom_adherent}} </option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -30,15 +34,15 @@
                 </button>
                 &nbsp;
                 <button type="button" class="btn btn-default btn-primary" 
-                    onclick="javascript: window.location = ' /* A compléter */';">
+                    onclick="javascript: window.location = '{{url('/listerOeuvres')}}';">
                     <span class="glyphicon glyphicon-remove"></span> Annuler
                 </button>
             </div>           
         </div>
         <div class="col-md-6 col-md-offset-3">
-             /* A compléter */
+            @include('error')
         </div>        
     </div>
 </div>
- /* A compléter */
- /* A compléter */
+{!! Form::close() !!}
+@stop
