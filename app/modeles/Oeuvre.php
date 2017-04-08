@@ -38,12 +38,13 @@ class Oeuvre extends Model
 
     public function insertOeuvre($id_proprietaire, $titre, $prix)
     {
-        $id_oeuvre = DB::table('oeuvre')->max('id_oeuvre');
-        $id_oeuvre++;
+        $cle = DB::table('cles')->select('val_cle')->where('id_cle','=','OEUVRE')->first();
+        $id_oeuvre=$cle->val_cle+1;
 
         try {
             DB::table('oeuvre')
                 ->insert(['id_oeuvre' => $id_oeuvre, 'id_proprietaire' => $id_proprietaire, 'titre' => $titre, 'prix' => $prix]);
+            DB::table('cles')->where('id_cle','=','OEUVRE')->update(['val_cle' => $id_oeuvre]);
         } catch (Exception $ex) {
             throw $ex;
         }
