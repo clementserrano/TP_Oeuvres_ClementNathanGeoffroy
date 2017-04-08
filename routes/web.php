@@ -17,13 +17,13 @@ Route::get('/', function () {
 
 
 // Afficher le formulaire d'authentification 
-Route::get('/getLogin', 'AdherentController@getLogin');
+Route::get('/getLogin', 'ProprietaireController@getLogin');
 
 // Réponse au clic sur le bouton Valider du formulaire formLogin
-Route::post('/signIn', 'AdherentController@signIn');
+Route::post('/signIn', 'ProprietaireController@signIn');
 
 // Déloguer le propriétaire
-Route::get('/signOut', 'AdherentController@signOut');
+Route::get('/signOut', 'ProprietaireController@signOut');
 
 // Afficher la liste des Oeuvres
 Route::get('/listerOeuvres','OeuvreController@getOeuvres');
