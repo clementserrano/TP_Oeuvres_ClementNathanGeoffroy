@@ -26,4 +26,12 @@ class Proprietaire extends Model
     public function logout(){
         Session::forget('id');
     }
+
+    public function getProprietaires()
+    {
+        $proprietaires = DB::table('proprietaire')
+            ->select('id_proprietaire', 'nom_proprietaire', 'prenom_proprietaire')
+            ->get();
+        return $proprietaires;
+    }
 }

@@ -38,13 +38,13 @@ Route::post('/validerOeuvre','OeuvreController@validateOeuvre');
 Route::get('/ajouterOeuvre','OeuvreController@addOeuvre');
 
 // Supprimer une oeuvre
-Route::get('/supprimerOeuvre/{id}','OeuvreController@deleteManga');
+Route::get('/supprimerOeuvre/{id}','OeuvreController@deleteOeuvre');
 
 // Afficher la liste des réservations
 Route::get('/listerReservations','ReservationController@getReservations');
 
 // Réserver une oeuvre
-Route::get('/reserverOeuvre','ReservationController@reserveOeuvre');
+Route::get('/reserverOeuvre/{id}','ReservationController@reserveOeuvre');
 
 // Valider une réservation
 Route::post('/validerReservation','ReservationController@validateReservation');

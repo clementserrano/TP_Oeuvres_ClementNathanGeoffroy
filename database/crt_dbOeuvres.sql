@@ -196,6 +196,7 @@ end
 //
 DELIMITER ;
 
+
 --
 -- Index pour les tables exportées
 --
@@ -211,6 +212,7 @@ ALTER TABLE `adherent`
 --
 ALTER TABLE `oeuvre`
  ADD PRIMARY KEY (`id_oeuvre`), ADD KEY `FK_OEUVRE_PROPRIETAIRE` (`id_proprietaire`);
+
 
 --
 -- Index pour la table `cles`
