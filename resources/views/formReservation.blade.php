@@ -12,17 +12,19 @@
         <div class="form-group">
             <label class="col-md-3 control-label">Date réservation : </label>
             <div class="col-md-3">
-                    <input type="text" name="date_reservation" id="datepicker" value="" class="form-control" placeholder="JJ-MM-AAAA" required/>
+                    <input type="text" name="date_reservation" id="datepicker" class="form-control" placeholder="JJ-MM-AAAA" required/>
             </div>
         </div>        
         <div class="form-group">
             <label class="col-md-3 control-label">Adhérent : </label>
             <div class="col-md-3">
                 <select class='form-control' name='cbAdherent' required>
-                    <OPTION VALUE=0>Sélectionner un adhérent</option>
+                    <option value=0>Sélectionner un adhérent</option>
                     @foreach($adherents as $adherent)
-                        selected=""
-                        <option value="{{$adherent->id_adherent}}">{{$adherent->prenom_adherent}} {{$adherent->nom_adherent}} </option>
+                        <option value="{{$adherent->id_adherent}}"
+                            @if($adherent->id_adherent == $id_adherent) selected @endif
+                            >{{$adherent->prenom_adherent}} {{$adherent->nom_adherent}}
+                        </option>
                     @endforeach
                 </select>
             </div>

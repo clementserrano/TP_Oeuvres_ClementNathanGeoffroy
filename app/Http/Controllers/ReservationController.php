@@ -7,43 +7,39 @@ use App\modeles\Reservation;
 use App\modeles\Oeuvre;
 
 use Request;
-use Illuminate\Support\Facades\Session;
 
 class ReservationController extends Controller
 {
-    public function getReservations()
+    public function getReservations($erreur = "")
     {
-        $erreur = Session::get('erreur');
-        Session::forget('erreur');
         $reservation = new Reservation();
         $reservations = $reservation->getReservations();
         return view('listeReservations', compact('reservations', 'erreur'));
     }
 
-    public function reserveOeuvre($id, $erreur = "")
+    public function reserveOeuvre($id, $date_reservation = null, $id_adherent = null, $erreur = "")
     {
         $lOeuvre = new Oeuvre();
         $oeuvre = $lOeuvre->getOeuvre($id);
         $adherent = new Adherent();
         $adherents = $adherent->getAdherents();
         $titreVue = "Réservation d'une Oeuvre";
-        return view('formReservation', compact('oeuvre', 'adherents', 'titreVue', 'erreur'));
+        return view('formReservation', compact('oeuvre', 'adherents', 'titreVue', 'date_reservation', 'id_adherent', 'erreur'));
     }
 
     public function validateReservation()
     {
         $date = Request::input('date_reservation');
         $date_reservation = date('Y-m-d', strtotime($date));
-
         $id_oeuvre = Request::input('id_oeuvre');
         $id_adherent = Request::input('cbAdherent');
         $reservation = new Reservation();
 
         try {
             $reservation->reserveOeuvre($date_reservation, $id_oeuvre, $id_adherent);
-        } catch (Exception $ex) {
+        } catch (\Illuminate\Database\QueryException $ex) {
             $erreur = $ex->getMessage();
-            return $this->reserveOeuvre($id_oeuvre, $erreur);
+            return $this->reserveOeuvre($id_oeuvre, $date, $id_adherent, $erreur);
         }
 
         return redirect('/listerReservations');
@@ -55,7 +51,7 @@ class ReservationController extends Controller
 
         try {
             $reservation->confirmReservation($date, $id);
-        } catch (Exception $ex) {
+        } catch (\Illuminate\Database\QueryException $ex) {
             $erreur = $ex->getMessage();
             return $this->confirmReservation($date, $id, $erreur);
         }
@@ -69,9 +65,9 @@ class ReservationController extends Controller
 
         try {
             $reservation->deleteReservation($date, $id);
-        } catch (Exception $ex) {
+        } catch (\Illuminate\Database\QueryException $ex) {
             $erreur = $ex->getMessage();
-            return $this->deleteReservation($date, $id, $erreur);
+            $this->getReservations($erreur);
         }
 
         return redirect('/listerReservations');

@@ -6,14 +6,11 @@ use App\modeles\Proprietaire;
 use App\modeles\Oeuvre;
 
 use Request;
-use Illuminate\Support\Facades\Session;
 
 class OeuvreController extends Controller
 {
-    public function getOeuvres()
+    public function getOeuvres($erreur = "")
     {
-        $erreur = Session::get('erreur');
-        Session::forget('erreur');
         $oeuvre = new Oeuvre();
         $oeuvres = $oeuvre->getOeuvres();
         return view('listeOeuvres', compact('oeuvres', 'erreur'));
@@ -43,12 +40,12 @@ class OeuvreController extends Controller
             } else {
                 $oeuvre->insertOeuvre($id_proprietaire, $titre, $prix);
             }
-        } catch (Exception $ex) {
+        } catch (\Illuminate\Database\QueryException $ex) {
             $erreur = $ex->getMessage();
             if ($id_oeuvre > 0) {
                 return $this->updateOeuvre($id_oeuvre, $erreur);
             } else {
-                return $this->addOeuvre($erreur);
+                return $this->addOeuvre($id_proprietaire,$titre,$prix,$erreur);
             }
 
         }
@@ -56,9 +53,12 @@ class OeuvreController extends Controller
         return redirect('/listerOeuvres');
     }
 
-    public function addOeuvre($erreur = "")
+    public function addOeuvre($id_proprietaire = null,$titre = "",$prix = 0,$erreur = "")
     {
         $oeuvre = new Oeuvre();
+        $oeuvre->id_proprietaire = $id_proprietaire;
+        $oeuvre->titre = $titre;
+        $oeuvre->prix = $prix;
         $proprietaire = new Proprietaire();
         $proprietaires = $proprietaire->getProprietaires();
         $titreVue = "Ajout d'un Proprietaire";
@@ -66,15 +66,15 @@ class OeuvreController extends Controller
 
     }
 
-    public function deleteOeuvre($id, $erreur = '')
+    public function deleteOeuvre($id)
     {
         $oeuvre = new Oeuvre();
 
         try {
             $oeuvre->deleteOeuvre($id);
-        } catch (Exception $ex) {
+        } catch (\Illuminate\Database\QueryException $ex) {
             $erreur = $ex->getMessage();
-            return $this->deleteOeuvre($id, $erreur);
+            $this->getOeuvres($erreur);
         }
 
         return redirect('/listerOeuvres');

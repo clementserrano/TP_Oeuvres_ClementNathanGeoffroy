@@ -21,7 +21,7 @@
                         selected=""
                         <option value="{{$proprietaire->id_proprietaire}}"
                                 @if ($proprietaire->id_proprietaire == $oeuvre->id_proprietaire)
-                                selected="selected"
+                                    selected="selected"
                                 @endif
                         >{{$proprietaire->prenom_proprietaire}} {{$proprietaire->nom_proprietaire}} </option>
                     @endforeach

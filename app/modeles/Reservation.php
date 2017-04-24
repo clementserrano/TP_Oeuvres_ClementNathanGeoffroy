@@ -4,6 +4,7 @@ namespace App\modeles;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Mockery\Exception;
 
 class Reservation extends Model
 {
