@@ -1,13 +1,12 @@
 ## Fonctionnalités complémentaires
 
+- **Date réservation** : Utiliser un composant de type Calendrier. Attention, il faut que cela fonctionne sur tout type de navigateur ! ***1 point ***
+- **Date réservation** : Afficher et saisir la date au format français, mais continuer à l'enregistrer au format anglais. ***2 points ***
 - **Confirmation de réservation** : Une réservation ne devrait pouvoir être confirmée que si elle est en Attente. ***2 points***
-- **Confirmation de réservation** : Comme pour une suppression, demander une confirmation
-                                    avant d'effectuer la bascule. ***1 point***
-- **Liste des réservations** : Quand il n'y a pas de réservations, seule l'entête du tableau
-                           est affichée, il vaudrait mieux afficher le texte : Aucune
-                           réservation enregistrée, ou quelque chose de similaire. ***2 points***
-                           
-**Bonus Total :** ***5 points***
+- **Confirmation de réservation** : Comme pour une suppression, demander une confirmation avant d'effectuer la bascule. ***1 point***
+- **Liste des réservations** : Quand il n'y a pas de réservations, seule l'entête du tableau est affichée, il vaudrait mieux afficher le texte : Aucune réservation enregistrée, ou quelque chose de similaire. ***2 points***
+                
+**Bonus Total :** ***8 points***
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 

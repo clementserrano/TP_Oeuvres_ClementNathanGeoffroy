@@ -22,7 +22,7 @@
             @foreach($reservations as $reservation)
             <tr>
                 <td>{{ $reservation->titre }}</td>
-                <td>{{ $reservation->date_reservation }}</td>
+                <td>{{ date('d-m-Y', strtotime($reservation->date_reservation)) }}</td>
                 <td>{{ $reservation->statut }}</td>
                 <td>{{ $reservation->prenom_adherent }}</td>
                 <td>{{ $reservation->nom_adherent }}</td>

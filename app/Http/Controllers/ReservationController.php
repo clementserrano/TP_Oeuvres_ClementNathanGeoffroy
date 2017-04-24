@@ -32,7 +32,9 @@ class ReservationController extends Controller
 
     public function validateReservation()
     {
-        $date_reservation = Request::input('date_reservation');
+        $date = Request::input('date_reservation');
+        $date_reservation = date('Y-m-d', strtotime($date));
+
         $id_oeuvre = Request::input('id_oeuvre');
         $id_adherent = Request::input('cbAdherent');
         $reservation = new Reservation();
