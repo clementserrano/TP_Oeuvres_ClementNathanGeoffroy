@@ -67,7 +67,7 @@ class ReservationController extends Controller
             $reservation->deleteReservation($date, $id);
         } catch (\Illuminate\Database\QueryException $ex) {
             $erreur = $ex->getMessage();
-            $this->getReservations($erreur);
+            return $this->getReservations($erreur);
         }
 
         return redirect('/listerReservations');

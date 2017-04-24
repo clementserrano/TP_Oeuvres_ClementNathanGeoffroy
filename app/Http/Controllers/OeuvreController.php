@@ -74,7 +74,7 @@ class OeuvreController extends Controller
             $oeuvre->deleteOeuvre($id);
         } catch (\Illuminate\Database\QueryException $ex) {
             $erreur = $ex->getMessage();
-            $this->getOeuvres($erreur);
+            return $this->getOeuvres($erreur);
         }
 
         return redirect('/listerOeuvres');

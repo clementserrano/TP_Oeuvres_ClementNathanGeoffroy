@@ -1,5 +1,6 @@
 ## Fonctionnalités complémentaires
 
+- **Messages d'erreur** : Plutôt que des messages "brut de décoffrage", afficher des messages compréhensibles par un utilisateur lambda. Il faut en plus que la structure employée soit généralisable, donc éviter les constantes dans le code. Une piste : baser le libellé du message affiché sur le nom de la contrainte msql retournée. ***4 points***
 - **Date réservation** : Utiliser un composant de type Calendrier. Attention, il faut que cela fonctionne sur tout type de navigateur ! ***1 point***
 - **Date réservation** : Afficher et saisir la date au format français, mais continuer à l'enregistrer au format anglais. ***2 points***
 - **Réservation** : Quand on créé une réservation et qu'il y a une erreur, on perd les données. Faire en sorte que les données saisies restent affichées. ***2 points***
@@ -8,7 +9,7 @@
 - **Confirmation de réservation** : Comme pour une suppression, demander une confirmation avant d'effectuer la bascule. ***1 point***
 - **Liste des réservations** : Quand il n'y a pas de réservations, seule l'entête du tableau est affichée, il vaudrait mieux afficher le texte : Aucune réservation enregistrée, ou quelque chose de similaire. ***2 points***
                 
-**Bonus Total :** ***12 points***
+**Bonus Total :** ***16 points***
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
